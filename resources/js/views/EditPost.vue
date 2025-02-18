@@ -73,11 +73,6 @@ export default {
                 formData.append("gambar", newImage.value);
             }
 
-            console.log("Final FormData:");
-            for (let pair of formData.entries()) {
-                console.log(pair[0] + ": " + pair[1]);
-            }
-
             try {
                 await axios.post(`/posts/${post.value.id}`, formData, {
                     headers: {
@@ -89,7 +84,6 @@ export default {
                 alert("Post berhasil diperbarui");
                 router.push("/dashboard");
             } catch (error) {
-                console.error("Error Detail:", error.response?.data || error);
                 alert("Gagal memperbarui post");
             }
         };

@@ -54,7 +54,6 @@ export default {
           router.push('/login');
         }, 5000);
       } catch (error) {
-        console.error(error.response.data);
         message.value = "Gagal mereset password, coba lagi.";
         messageType.value = "error-message";
       }

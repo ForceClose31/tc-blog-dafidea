@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -35,7 +34,6 @@ class UserController extends Controller
 
             return redirect()->back()->with('success', 'Pengguna berhasil ditambahkan.');
         } catch (\Exception $e) {
-            Log::error('Error saving user: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menambahkan pengguna.');
         }
     }
