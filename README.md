@@ -17,10 +17,11 @@
 git clone https://github.com/ForceClose31/tc-blog-dafidea.git
 ```
 
-2. Install composer, buat copy dari .env.example, dan generate APP_KEY 
+2. Install composer, npm, buat copy dari .env.example, dan generate APP_KEY 
 
 ```console
 composer install
+npm install
 cp .env.example .env
 php artisan key:generate
 ```
