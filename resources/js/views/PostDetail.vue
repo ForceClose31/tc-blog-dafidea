@@ -57,11 +57,6 @@ export default {
         });
 
         const submitComment = async () => {
-            if (!authStore.token) {
-                alert("Silakan login terlebih dahulu");
-                return;
-            }
-
             await axios.post(
                 `/posts/${post.value.id}/comments`,
                 { komentar: newComment.value },
