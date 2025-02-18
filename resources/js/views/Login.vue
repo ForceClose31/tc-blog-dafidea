@@ -5,6 +5,9 @@
             <input type="email" v-model="email" placeholder="Email" class="input">
             <input type="password" v-model="password" placeholder="Password" class="input">
             <button @click="login" class="btn">Login</button>
+            <div class="reset-link">
+                <router-link to="/password/reset" class="forgot-password">Lupa Password?</router-link>
+            </div>
         </div>
 
         <div v-if="message" class="error-container">
@@ -122,6 +125,7 @@ export default {
     background: #007bff;
     color: white;
     padding: 10px;
+    margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -177,6 +181,10 @@ export default {
 
 .success-message .progress-bar {
     background: #4CAF50; 
+}
+
+.forgot-password {
+    font-size: 14px;
 }
 
 </style>

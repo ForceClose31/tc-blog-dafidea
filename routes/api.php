@@ -20,7 +20,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-
+Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+Route::post('/password/reset', [AuthController::class, 'sendResetPasswordLink'])->name('password.reset');
 Route::post('/posts/{postId}/comments', [CommentController::class, 'store']);
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{id}', [PostController::class, 'show']);

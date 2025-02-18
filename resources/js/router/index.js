@@ -4,6 +4,8 @@ import PostDetail from "../views/PostDetail.vue";
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import EditPost from "../views/EditPost.vue";
+import ResetPassword from "../views/ResetPassword.vue";
+import NewResetPassword from "../views/NewPassword.vue";
 import { useAuthStore } from "../stores/auth";
 import axios from "axios";
 
@@ -20,6 +22,16 @@ const routes = [
         path: "/posts/:id/edit",
         name: "EditPost",
         component: EditPost,
+    },
+    {
+        path: "/password/reset",
+        name: "ResetPassword",
+        component: ResetPassword,
+    },
+    {
+        path: "/reset-password",
+        name: "NewResetPassword",
+        component: NewResetPassword,
     },
 ];
 

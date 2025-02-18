@@ -19,6 +19,11 @@ Route::get('/posts/{any}', function () {
 })->where('any', '.*');
 
 
+Route::get('/reset-password', function () {
+    return view('welcome'); 
+});
+
+
 Route::get('/dashboard', function () {
     /** @var \App\Models\User $user */
     $user = Auth::user();
