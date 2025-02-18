@@ -6,7 +6,8 @@
 3. Dashboard (Admin)
 4. CRUD Post (Admin)
 5. View Post (Home for Public User)
-6. Create comment (Public User)
+6. Detail Post (Public User)
+7. Create comment (Public User)
 
 ## Install and Run
 
@@ -16,10 +17,11 @@
 git clone https://github.com/ForceClose31/tc-blog-dafidea.git
 ```
 
-2. Install composer, buat copy dari .env.example, dan generate APP_KEY 
+2. Install composer, npm, buat copy dari .env.example, dan generate APP_KEY 
 
 ```console
 composer install
+npm install
 cp .env.example .env
 php artisan key:generate
 ```
@@ -57,7 +59,13 @@ DB_PASSWORD=
 php artisan migrate --seed
 ```
 
-6. Jalankan npm serta laravel
+6. Link storage untuk menyimpan gambar
+
+```console
+php artisan storage:link
+```
+
+7. Jalankan npm serta laravel
 
 ```console
 npm run dev
@@ -66,6 +74,15 @@ lalu new console/terminal
 ```console
 php artisan serve
 ```
+
+### Untuk login gunakan akun dari seeder
+
+- email : admin3@gmail.com
+- password : 123123
+
+### Untuk forgot password/reset password
+
+Pastikan untuk email pada database table user yang awalnya admin3@gmail.com, ganti dengan email bebas aktif anda seperti contoh forceclose11@gmail.com untuk mengetes apakah email reset link password berhasil dikirim atau tidak ke email anda
 
 ## Stack
 1. Laravel untuk backend menggunakan route api.php dan frontend menggunakan route pada web.php
