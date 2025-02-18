@@ -20,7 +20,7 @@
                     />
                     <h2 class="title">{{ post.judul }}</h2>
                     <p class="date">{{ formatDate(post.tanggal_rilis) }}</p>
-                    <p class="excerpt">{{ post.deskripsi.slice(0, 100) }}...</p>
+                    <p class="excerpt">{{ post.deskripsi.slice(0, 60) }}...</p>
                 </router-link>
             </div>
         </div>
