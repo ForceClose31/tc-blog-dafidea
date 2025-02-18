@@ -3,20 +3,45 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'user']);
+        $permissions = [
+            'dashboard',
+            'create',
+            'edit',
+            'delete',
+        ];
 
-        $user = User::first();
-        if ($user) {
-            $user->assignRole('admin');
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $roles = [
+            'Admin' => [
+                'dashboard',
+                'create',
+                'edit',
+                'delete',
+            ],
+        ];
+
+        foreach ($roles as $roleName => $rolePermissions) {
+            $role = Role::firstOrCreate(['name' => $roleName]);
+            foreach ($rolePermissions as $permissionName) {
+                $permission = Permission::where('name', $permissionName)->first();
+                if ($permission) {
+                    $role->givePermissionTo($permission);
+                }
+            }
         }
     }
 }

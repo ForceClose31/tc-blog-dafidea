@@ -17,7 +17,6 @@ class PostController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'tanggal_rilis' => 'required|date',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -26,7 +25,7 @@ class PostController extends Controller
 
         $post = Post::create([
             'judul' => $request->judul,
-            'tanggal_rilis' => $request->tanggal_rilis,
+            'tanggal_rilis' => now(),
             'deskripsi' => $request->deskripsi,
             'gambar' => $path,
             'user_id' => Auth::id(),
@@ -50,14 +49,13 @@ class PostController extends Controller
 
         $request->validate([
             'judul' => 'required|string|max:255',
-            'tanggal_rilis' => 'required|date',
             'deskripsi' => 'required|string',
-            'pict' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if ($request->hasFile('pict')) {
-            $path = $request->file('pict')->store('posts', 'public');
-            $post->pict = $path;
+        if ($request->hasFile('gambar')) {
+            $path = $request->file('gambar')->store('posts', 'public');
+            $post->gambar = $path;
         }
 
         $post->update($request->only(['judul', 'tanggal_rilis', 'deskripsi']));

@@ -2,22 +2,50 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $permissions = [
+            'dashboard',
+            'create',
+            'edit',
+            'delete',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $admin = User::create([
+            'name' => 'Admin User',
+            'email' => 'admin3@gmail.com',
+            'role' => 'Admin',
+            'password' => bcrypt('123123'),
+        ]);
+
+        $admin->assignRole($adminRole);
+
+        $admin->givePermissionTo([
+            'dashboard',
+            'create',
+            'edit',
+            'delete'
+        ]);
+
+        $adminRole->givePermissionTo([
+            'dashboard',
+            'create',
+            'edit',
+            'delete'
         ]);
     }
 }
