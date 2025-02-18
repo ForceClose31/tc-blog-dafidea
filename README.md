@@ -6,7 +6,8 @@
 3. Dashboard (Admin)
 4. CRUD Post (Admin)
 5. View Post (Home for Public User)
-6. Create comment (Public User)
+6. Detail Post (Public User)
+7. Create comment (Public User)
 
 ## Install and Run
 
