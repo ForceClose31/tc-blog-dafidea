@@ -63,32 +63,22 @@ export default {
         };
 
         const updatePost = async () => {
+            const formData = new FormData();
+
+            formData.append("judul", post.value.judul);
+            formData.append("deskripsi", post.value.deskripsi);
+
+            if (newImage.value) {
+                formData.append("gambar", newImage.value);
+            }
+
+            console.log("Final FormData:");
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ": " + pair[1]);
+            }
+
             try {
-                const response = await axios.get("/me", {
-                    headers: { Authorization: `Bearer ${authStore.token}` },
-                });
-
-                if (response.data.role !== "Admin") {
-                    alert("403 - Anda tidak memiliki izin!");
-                    return;
-                }
-                
-                const formData = new FormData();
-                formData.append("judul", post.value.judul);
-                formData.append("deskripsi", post.value.deskripsi);
-
-                console.log("Form Data", formData);
-
-                if (newImage.value) {
-                    formData.append("gambar", newImage.value);
-                }
-
-                console.log("Judul:", post.value.judul);
-                console.log("Deskripsi:", post.value.deskripsi);
-
-                console.log("Form Data", formData);
-
-                await axios.put(`/posts/${post.value.id}`, formData, {
+                await axios.post(`/posts/${post.value.id}`, formData, {
                     headers: {
                         Authorization: `Bearer ${authStore.token}`,
                         "Content-Type": "multipart/form-data",
@@ -98,7 +88,7 @@ export default {
                 alert("Post berhasil diperbarui");
                 router.push("/dashboard");
             } catch (error) {
-                console.error("Error Detail:", error.response.data);
+                console.error("Error Detail:", error.response?.data || error);
                 alert("Gagal memperbarui post");
             }
         };
