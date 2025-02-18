@@ -74,6 +74,15 @@ lalu new console/terminal
 php artisan serve
 ```
 
+### Untuk login gunakan akun dari seeder
+
+- email : admin3@gmail.com
+- password : 123123
+
+### Untuk forgot password/reset password
+
+Pastikan untuk email pada database table user yang awalnya admin3@gmail.com, ganti dengan email bebas aktif anda seperti contoh forceclose11@gmail.com untuk mengetes apakah email reset link password berhasil dikirim atau tidak ke email anda
+
 ## Stack
 1. Laravel untuk backend menggunakan route api.php dan frontend menggunakan route pada web.php
 2. Vue.js untuk frontend
