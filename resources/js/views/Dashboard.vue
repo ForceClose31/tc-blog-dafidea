@@ -274,6 +274,16 @@ export default {
     cursor: pointer;
 }
 
+.logout-btn {
+    background: rgb(252, 0, 0);
+    color: white;
+}
+
+.home-btn {
+    background: #00a015;
+    color: white;
+}
+
 .edit-btn {
     background: orange;
 }

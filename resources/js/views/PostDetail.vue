@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <button @click="$router.push('/')" class="back-btn">⬅ Kembali</button>
+        <button @click="$router.push('/')" class="back-btn">Kembali</button>
 
         <div v-if="post" class="post-detail">
             <h1 class="title">{{ post.judul }}</h1>
@@ -139,6 +139,9 @@ export default {
     font-size: 16px;
     color: #333;
     margin-bottom: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .comment-list {

@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <button @click="$router.push('/dashboard')" class="back-btn">Kembali</button>
         <h1 class="title">Edit Post</h1>
 
         <div v-if="post" class="card">
@@ -107,6 +108,20 @@ export default {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+}
+
+.back-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background: #0056b3;
 }
 
 .title {
