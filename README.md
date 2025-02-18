@@ -57,7 +57,13 @@ DB_PASSWORD=
 php artisan migrate --seed
 ```
 
-6. Jalankan npm serta laravel
+6. Link storage untuk menyimpan gambar
+
+```console
+php artisan storage:link
+```
+
+7. Jalankan npm serta laravel
 
 ```console
 npm run dev
